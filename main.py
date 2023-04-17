@@ -1,10 +1,8 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
+
 
 from brackets import brackets
 from taxes import taxes
-
+from budgeting import budgeting
 
 
 
@@ -25,37 +23,14 @@ def main():
     # 11: placeholder
     # 12-17: maximum taxes for each previous bracket
     # ]
-    bracket = brackets("married", 2023, 45000)
+    bracket = brackets("single", 2023, 45000)
     tax_bill = taxes(45000, bracket)
-    print(tax_bill)
+    budgeting(45000, tax_bill)
 
 
 
 
-    #x = []
-    #k = 30000
-    #j = True
-    #while j == True:
-    #    x.append(k)
-    #    if k == 1000000:
-    #        j = False
-    #    else:
-    #        k += 5000
 
-    #y1 = []
-    #y2 = []
-    #y3 = []
-    #for i in range(0, len(x)):
-    #    y1.append(taxes(x[i], brackets("single", 2023, x[i])))
-    #for i in range(0, len(x)):
-    #    y2.append(taxes(x[i], brackets("married", 2023, x[i])))
-    #for i in range(0, len(x)):
-    #    y3.append(taxes(x[i], brackets("hoh", 2023, x[i])))
-
-    #plt.plot(x,y1, linewidth="1", marker="o")
-    #plt.plot(x,y2, linewidth="1", marker="o")
-    #plt.plot(x,y3, linewidth="1", marker="o")
-    #plt.show()
 
 
 

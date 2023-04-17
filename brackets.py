@@ -1,62 +1,27 @@
+import brackets_templates
 def brackets(filing, year, income):
-    _2023_template = [
-        # single 2023
-        # x0: standard deduction
-        # x1-6: tax brackets - 10,12,22,24,32,35,37
-        # x7-8: capital gains tax brackets - 15,20
-        # x9: maximum taxable income for fica
-        13850,
-        11000,
-        44725,
-        95375,
-        182100,
-        231250,
-        578125,
-        44625,
-        492300,
-        160200,
-        # married 2023
-        27700,
-        22000,
-        89450,
-        190750,
-        364200,
-        462500,
-        693750,
-        89250,
-        553850,
-        320400,
-        # hoh 2023
-        20800,
-        15700,
-        59850,
-        95350,
-        182100,
-        231250,
-        578100,
-        59750,
-        523050,
-        160200
-    ]
+
     bracket = []
     # j decides which part of the template is used to make the bracket
-    match filing:
-        case "single":
-            j = 0
-        case "married":
-            j = 10
-        case "hoh":
-            j = 20
-        case other:
-            print("error in setting filing")
-            return
+
+    if filing == "single":
+        j = 0
+    elif filing == "married":
+        j = 10
+    elif filing == "hoh":
+        j = 20
+    else:
+        print("error in setting filing")
+        return
     # k decides which template to use based off of year
-    match year:
-        case 2023:
-            k = _2023_template
-        case other:
-            print("error in setting year template")
-            return
+
+    if year == 2023:
+        k = brackets_templates._2023_template
+    elif year == 2022:
+        k = brackets_templates._2022_template
+    else:
+        print("error in setting year template")
+        return
 
     # this makes the bracket from the template
     for i in range(j, j + 10):
@@ -70,18 +35,18 @@ def brackets(filing, year, income):
         if i == 1:
             bracket.append(bracket[i] * 0.1)
         else:
-            match i:
-                case 2:
-                    l = 0.12
-                case 3:
-                    l = 0.22
-                case 4:
-                    l = 0.24
-                case 5:
-                    l = 0.32
-                case 6:
-                    l = 0.35
-                case other:
+
+            if i == 2:
+                l = 0.12
+            elif  i == 3:
+                l = 0.22
+            elif  i == 4:
+                l = 0.24
+            elif  i == 5:
+                l = 0.32
+            elif  i == 6:
+                l = 0.35
+            else:
                     print("error in giving tax percentage")
                     return
 
